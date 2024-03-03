@@ -47,13 +47,18 @@
   overflow: hidden;
 }
 
-.landingpage-text{
+.landingpage-text {
   text-align: center;
 }
 
-.landingpage-text-2{
+.landingpage-text-2 {
   text-align: center;
-margin-top: 40px;
+  margin-top: 40px;
+}
+
+.landingpage-text-3 {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .heart {

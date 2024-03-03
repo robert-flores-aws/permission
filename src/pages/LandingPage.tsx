@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 
 interface TimeElapsed {
   days: number;
@@ -82,7 +82,11 @@ export default function LandingPage() {
               {`It has been ${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds since February 4.`}
             </Container>
             <Container className="landingpage-text-2">
-              "I am always grateful to have you and will always love you with all of my efforts."
+              "I am always grateful to have you and will always love you with
+              all of my efforts."
+            </Container>
+            <Container className="landingpage-text-3">
+              <Button variant="outline-dark">{"Continue >>>"}</Button>
             </Container>
           </div>
         </div>
