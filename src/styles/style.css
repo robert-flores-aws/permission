@@ -29,9 +29,9 @@
 }
 
 .photo {
-  width: 50%;
+  width: 70%;
   height: 100%;
-  background-image: url("https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-image: url("../assets/images/IMG_5628.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -45,6 +45,10 @@
   line-height: 1.5;
   text-align: left;
   overflow: hidden;
+}
+
+.landingpage-text{
+  text-align: center;
 }
 
 .heart {
