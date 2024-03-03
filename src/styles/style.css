@@ -16,6 +16,10 @@
   z-index: 2;
 }
 
+.timeElapsed {
+  color: rgb(255, 0, 0); /* Change the color to your desired color */
+}
+
 .floating-rectangle {
   position: relative;
   width: 70%;
@@ -53,12 +57,12 @@
 
 .landingpage-text-2 {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .landingpage-text-3 {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .heart {

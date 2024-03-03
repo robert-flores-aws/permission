@@ -79,7 +79,9 @@ export default function LandingPage() {
               <h1 className="landingpage-text">Hi Mochi!</h1>
             </Container>
             <Container className="landingpage-text">
-              {`It has been ${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds since February 4.`}
+              {`It has been `}
+              <span className="timeElapsed">{`${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds`}</span>
+              {` since February 4.`}
             </Container>
             <Container className="landingpage-text-2">
               "I am always grateful to have you and will always love you with
