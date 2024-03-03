@@ -10,9 +10,16 @@ interface TimeElapsed {
 
 export default function LandingPage() {
   const [show, setShow] = useState(false);
+  const [done, setDone] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleReset = () => setDone(false);
+
+  const handleClose = () => {
+    setShow(false);
+    setDone(true);
+  };
   const handleShow = () => setShow(true);
+  const [noHovered, setNoHovered] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState<TimeElapsed>({
     days: 0,
     hours: 0,
@@ -75,55 +82,89 @@ export default function LandingPage() {
 
   return (
     <Container fluid className="landingpage-container">
-      <Container className="landingpage-layout">
-        <div className="floating-rectangle">
-          <div className="photo"></div>
-          <div className="paragraph-statement">
-            <Container>
-              <h1 className="landingpage-text">Hi Mochi!</h1>
-            </Container>
-            <Container className="landingpage-text">
-              {`It has been `}
-              <span className="timeElapsed">{`${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds`}</span>
-              {` since February 4.`}
-            </Container>
-            <Container className="landingpage-text-2">
-              "I am always grateful to have you and will always love you with
-              all of my efforts."
-            </Container>
-            <Container className="landingpage-text-3">
-              <Button variant="outline-dark" onClick={handleShow}>
-                {"Continue >>>"}
+      {done ? (
+        <Container className="landingpage-layout">
+          <div className="floating-rectangle">
+            <Container className="container-text">
+              YEEEY! SEEEE YOUUUU!!!! <br />I LOVE YOU!!!!
+              <br />
+              ❤❤❤❤❤❤❤
+              <br />
+              <Button variant="outline-danger" onClick={handleReset}>
+                {"RESET"}
               </Button>
+              <br />
             </Container>
+              
           </div>
-        </div>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Body>
-            Will You go on a date with me? <br />
-            <br />
-            When: <b>March 4, 2023 @9AM</b>
-            <br />
-            <br />
-            Where: <b>Tagaytay, Philippines</b>
-            <br />
-            <br />
-            What: Attire? <b>White</b>
-            <br />
-            <br />
-            Why: <b>Because I LOVE YOU and that day is our first monthsarry</b>
-            <br /><br />
-          </Modal.Body>
-          <Modal.Footer className="modal-footer">
-            <Button variant="success" onClick={handleClose}>
-              YES
-            </Button>
-            <Button variant="danger" onClick={handleClose}>
-              NO
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Container>
+        </Container>
+      ) : (
+        <Container className="landingpage-layout">
+          <div className="floating-rectangle">
+            <div className="photo"></div>
+            <div className="paragraph-statement">
+              <Container>
+                <h1 className="landingpage-text">Hi Mochi!</h1>
+              </Container>
+              <Container className="landingpage-text">
+                {`It has been `}
+                <span className="timeElapsed">{`${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds`}</span>
+                {` since February 4.`}
+              </Container>
+              <Container className="landingpage-text-2">
+                "I am always grateful to have you and will always love you with
+                all of my efforts."
+              </Container>
+              <Container className="landingpage-text-3">
+                <Button variant="outline-dark" onClick={handleShow}>
+                  {"Continue >>>"}
+                </Button>
+              </Container>
+            </div>
+          </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Body>
+              Will You go on a date with me? <br />
+              <br />
+              When: <b>March 4, 2023 @9AM</b>
+              <br />
+              <br />
+              Where: <b>Tagaytay, Philippines</b>
+              <br />
+              <br />
+              What: Attire? <b>White</b>
+              <br />
+              <br />
+              Why:{" "}
+              <b>Because I LOVE YOU and that day is our first monthsarry</b>
+              <br />
+              <br />
+            </Modal.Body>
+            <Modal.Footer className="modal-footer">
+              <Button
+                variant="success"
+                onClick={handleClose}
+                onMouseEnter={() => setNoHovered(false)} // Reset the state when mouse enters
+              >
+                YES
+              </Button>
+              {!noHovered && ( // Render "No" button only if not hovered
+                <Button
+                  variant="danger"
+                  onClick={handleClose}
+                  onMouseEnter={() => setNoHovered(true)} // Set the state when mouse enters
+                  style={{ visibility: noHovered ? "hidden" : "visible" }} // Hide the button if hovered
+                >
+                  NO
+                </Button>
+              )}
+              {noHovered && ( // Render the text only if "No" button is hovered
+                <span className="warning">"PLEASE DON'T CHOOSE NO HEHE!"</span>
+              )}
+            </Modal.Footer>
+          </Modal>
+        </Container>
+      )}
     </Container>
   );
 }
