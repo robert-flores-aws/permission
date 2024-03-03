@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 
 interface TimeElapsed {
   days: number;
@@ -9,6 +9,10 @@ interface TimeElapsed {
 }
 
 export default function LandingPage() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [timeElapsed, setTimeElapsed] = useState<TimeElapsed>({
     days: 0,
     hours: 0,
@@ -88,10 +92,37 @@ export default function LandingPage() {
               all of my efforts."
             </Container>
             <Container className="landingpage-text-3">
-              <Button variant="outline-dark">{"Continue >>>"}</Button>
+              <Button variant="outline-dark" onClick={handleShow}>
+                {"Continue >>>"}
+              </Button>
             </Container>
           </div>
         </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Body>
+            Will You go on a date with me? <br />
+            <br />
+            When: <b>March 4, 2023 @9AM</b>
+            <br />
+            <br />
+            Where: <b>Tagaytay, Philippines</b>
+            <br />
+            <br />
+            What: Attire? <b>White</b>
+            <br />
+            <br />
+            Why: <b>Because I LOVE YOU and that day is our first monthsarry</b>
+            <br /><br />
+          </Modal.Body>
+          <Modal.Footer className="modal-footer">
+            <Button variant="success" onClick={handleClose}>
+              YES
+            </Button>
+            <Button variant="danger" onClick={handleClose}>
+              NO
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </Container>
   );
