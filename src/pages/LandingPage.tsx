@@ -136,7 +136,7 @@ export default function LandingPage() {
               <br />
               <br />
               Why:{" "}
-              <b>Because I LOVE YOU and that day is our first monthsarry</b>
+              <b>Because I LOVE YOU and that day is our first monthsary</b>
               <br />
               <br />
             </Modal.Body>
