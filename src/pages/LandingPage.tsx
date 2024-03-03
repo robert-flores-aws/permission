@@ -9,7 +9,12 @@ interface TimeElapsed {
 }
 
 export default function LandingPage() {
-  const [timeElapsed, setTimeElapsed] = useState<TimeElapsed>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeElapsed, setTimeElapsed] = useState<TimeElapsed>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
   let animationFrameId: number;
 
   useEffect(() => {
@@ -19,12 +24,19 @@ export default function LandingPage() {
     // Function to update time elapsed
     function updateTimeElapsed() {
       const currentDate = new Date();
-      const timeDiff = Math.floor((currentDate.getTime() - startDate.getTime()) / 1000); // in seconds
+      const timeDiff = Math.floor(
+        (currentDate.getTime() - startDate.getTime()) / 1000
+      ); // in seconds
       const daysElapsed = Math.floor(timeDiff / (3600 * 24));
       const hoursElapsed = Math.floor((timeDiff % (3600 * 24)) / 3600);
       const minutesElapsed = Math.floor((timeDiff % 3600) / 60);
       const secondsElapsed = timeDiff % 60;
-      setTimeElapsed({ days: daysElapsed, hours: hoursElapsed, minutes: minutesElapsed, seconds: secondsElapsed });
+      setTimeElapsed({
+        days: daysElapsed,
+        hours: hoursElapsed,
+        minutes: minutesElapsed,
+        seconds: secondsElapsed,
+      });
       animationFrameId = requestAnimationFrame(updateTimeElapsed);
     }
 
@@ -34,7 +46,6 @@ export default function LandingPage() {
     // Clean up function
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
-
 
   useEffect(() => {
     function createHeart() {
@@ -67,7 +78,12 @@ export default function LandingPage() {
             <Container>
               <h1 className="landingpage-text">Hi Mochi!</h1>
             </Container>
-          {`It has been ${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds since February 4.`}
+            <Container className="landingpage-text">
+              {`It has been ${timeElapsed.days} days, ${timeElapsed.hours} hours, ${timeElapsed.minutes} minutes, and ${timeElapsed.seconds} seconds since February 4.`}
+            </Container>
+            <Container className="landingpage-text-2">
+              "I am always grateful to have you and will always love you with all of my efforts."
+            </Container>
           </div>
         </div>
       </Container>

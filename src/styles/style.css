@@ -51,6 +51,11 @@
   text-align: center;
 }
 
+.landingpage-text-2{
+  text-align: center;
+margin-top: 40px;
+}
+
 .heart {
   position: fixed;
   color: red;
